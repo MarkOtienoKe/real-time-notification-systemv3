@@ -1,0 +1,231 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "title": "User Service API",
+    "description": "API documentation for the User Service",
+    "version": "1.0.0"
+  },
+  "basePath": "/api/v1",
+  "schemes": [
+    "http"
+  ],
+  "paths": {
+    "/users": {
+      "post": {
+        "summary": "Create User",
+        "description": "Creates a new user",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to be added",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "first_name": {
+                  "type": "string"
+                },
+                "last_name": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User created successfully"
+          }
+        }
+      }
+    },
+    "/login": {
+      "post": {
+        "summary": "Login",
+        "description": "User Login",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Login object",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string"
+                },
+                "password": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "User Logged successfully"
+          }
+        }
+      }
+    },
+    "/logout": {
+      "post": {
+        "summary": "Logout",
+        "description": "User Logout",
+        "responses": {
+          "201": {
+            "description": "User Logged out successfully"
+          }
+        }
+      }
+    },
+    "/allUsers": {
+      "get": {
+        "summary": "Get list of users",
+        "description": "Returns a list of all users",
+        "operationId": "getUsers",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful operation",
+            "schema": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "username": {
+                    "type": "string",
+                    "example": "john_doe"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          }
+        }
+      }
+    },
+    "/users/{user_id}": {
+      "get": {
+        "summary": "Get User",
+        "description": "Returns a user by ID",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "A user object",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "id": {
+                  "type": "integer"
+                },
+                "username": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "first_name": {
+                  "type": "string"
+                },
+                 "last_name": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      },
+    
+      "put": {
+        "summary": "Update User",
+        "description": "Updates a user by ID",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that needs to be updated",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string"
+                },
+                "email": {
+                  "type": "string"
+                },
+                "first_name": {
+                  "type": "string"
+                },
+                "last_name": {
+                  "type": "string"
+                }
+                
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User updated successfully"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete User",
+        "description": "Deletes a user by ID",
+        "parameters": [
+          {
+            "name": "user_id",
+            "in": "path",
+            "required": true,
+            "type": "integer"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User deleted successfully"
+          },
+          "404": {
+            "description": "User not found"
+          }
+        }
+      }
+    }
+  }
+}
