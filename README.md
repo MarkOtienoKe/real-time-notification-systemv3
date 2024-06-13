@@ -25,17 +25,19 @@ This project is a real-time notification system that integrates a user service, 
 
 ### 1. Clone the Repository
 ```sh
-git clone git remote add origin git@github.com:MarkOtienoKe/real-time-notification-system.git
+git clone git remote add origin git@github.com:MarkOtienoKe/real-time-notification-systemv3.git
 cd real-time-notification-system
-docker-compose up --build
 
-### Start Services
+For each service copy .env.example to .env and replace env variables
+Then run docker-compose up --build
+
+Start Services
 docker-compose up
 
-### Stop Services
+Stop Services
 docker-compose down
 
-###API Endpoint
+API Endpoint
 - For User service access Swagger using
 http://127.0.0.1:9111/api/docs/
 
@@ -46,5 +48,6 @@ http://127.0.0.1:9112/api/docs/
 http://127.0.0.1:9113/api/v1
 
 WebSocket Endpoint: ws://127.0.0.1:9113/api/v1/socket.io/
+
 
 
